@@ -41,5 +41,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Run') {
+            steps {
+                script {
+                    // Find the jar file and run it
+                    bat '''for %%f in (target\\*.jar) do "%JAVA_HOME%\\bin\\java" -Dserver.port=8090 -jar "%%f"'''
+                }
+            }
+        }
     }
 }
